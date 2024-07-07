@@ -12,6 +12,6 @@ module Dot = Graph.Graphviz.Dot(struct
   let graph_attributes _ = []
 end)
 
-let graph_to_dot ?(filename = "output/graph.dot") g =
+let graph_to_dot ?(filename = "_output/graph.dot") g =
   let file = open_out_bin filename in 
   Dot.output_graph file g 
