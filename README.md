@@ -1,7 +1,7 @@
 # Hiboux graphes
 
 <p align="center">
-    <img src="resources/images/grand-duc.jpg" alt="owl.jpg">
+    <img src="assets/grand-duc.jpg" alt="owl.jpg">
 </p>
 
 <p align="center">
