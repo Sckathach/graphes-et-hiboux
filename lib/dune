@@ -1,0 +1,8 @@
+(library
+ (public_name singeries)
+ (name singeries)
+ (libraries graphics ocamlgraph owl))
+
+(env
+  (dev
+    (flags (:standard -warn-error -A))))

@@ -1,0 +1,8 @@
+(executable
+ (public_name singeries)
+ (name main)
+ (libraries singeries ocamlgraph core_unix owl))
+
+(env
+  (dev
+    (flags (:standard -warn-error -A))))
