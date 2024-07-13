@@ -15,5 +15,16 @@
 
 # Installation
 ```shell
-opam install owl ocamlgraph odoc ounit2 core_unix
+opam install owl ocamlgraph odoc ounit2 core_unix cohttp-lwt-unix lwt yojson
 ```
+
+# Visualisation
+## Graphvizzz
+Using the `graph_to_dot` function provided in the module `Aigle`: 
+
+![graphviz_example](assets/graphviz_example.png)
+
+## Neo4j
+Using the pawar of Neo4j:
+
+![screenshot_neo4j](assets/screenshot_neo4j.png)
