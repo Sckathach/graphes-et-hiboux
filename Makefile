@@ -18,4 +18,4 @@ format:
 .SILENT:
 dot: run 
 	dot -Tsvg _output/graph.dot > _output/graph.html 
-	firefox output/graph.html
+	firefox _output/graph.html

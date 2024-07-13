@@ -1,7 +1,7 @@
 (library
  (public_name singeries)
  (name singeries)
- (libraries graphics ocamlgraph owl))
+ (libraries graphics ocamlgraph owl cohttp-lwt-unix lwt yojson))
 
 (env
   (dev
