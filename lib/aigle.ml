@@ -1,7 +1,7 @@
 open Graph
 open Hibou
 
-module Dot = Graph.Graphviz.Dot(struct
+module Dot= Graph.Graphviz.Neato(struct 
   include G 
   let edge_attributes (_, _) = [] 
   let default_edge_attributes _ = []
@@ -12,9 +12,17 @@ module Dot = Graph.Graphviz.Dot(struct
   let graph_attributes _ = []
 end)
 
-let graph_to_dot ?(filename = "_output/graph.dot") g =
+let graph_to_dot_alt ?(filename = "_output/graph.dot") g =
   let file = open_out_bin filename in 
   Dot.output_graph file g 
+
+let graph_to_dot ?(filename = "_output/graph.dot") g =  
+  let out_channel = open_out filename in 
+  Printf.fprintf out_channel "graph G {\n";
+  G.iter_vertex (fun x -> Printf.fprintf out_channel " %d [shape=circle];\n" x) g; 
+  G.iter_edges (fun x -> fun y -> Printf.fprintf out_channel " %d -- %d;\n" x y) g;
+  Printf.fprintf out_channel "}\n";
+  close_out out_channel
 
 module type NEO_PARAMS = sig
   val url : string 
@@ -73,4 +81,5 @@ module Neo (Params : NEO_PARAMS) = struct
   let edges_to_neo4j = G.iter_edges (fun x -> fun y -> Lwt_main.run (add_edge (string_of_int x) (string_of_int y))) 
   let to_neo4j g = vertices_to_neo4j g; edges_to_neo4j g
 end
+
 

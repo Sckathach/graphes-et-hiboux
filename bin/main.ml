@@ -33,5 +33,14 @@ let g = G.empty
     (9, 10); 
     (11, 12)
   ]
-  |> N.to_neo4j
+  |> graph_to_dot_alt 
+
+(* let () =  *)
+(*   let filename = "_output/graph.dot" in  *)
+(*   let out_channel = open_out filename in  *)
+(*   Printf.fprintf out_channel "graph G {\n"; *)
+(*   G.iter_vertex (fun x -> Printf.fprintf out_channel " %d [shape=circle];\n" x) g;  *)
+(*   G.iter_edges (fun x -> fun y -> Printf.fprintf out_channel " %d -- %d;\n" x y) g; *)
+(*   Printf.fprintf out_channel "}\n"; *)
+(*   close_out out_channel *)
 
