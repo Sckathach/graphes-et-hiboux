@@ -68,5 +68,9 @@ module Neo (Params : NEO_PARAMS) = struct
       ])
     ]) in
     post_request body_str
+
+  let vertices_to_neo4j = G.iter_vertex (fun x -> Lwt_main.run (add_node (string_of_int x))) 
+  let edges_to_neo4j = G.iter_edges (fun x -> fun y -> Lwt_main.run (add_edge (string_of_int x) (string_of_int y))) 
+  let to_neo4j g = vertices_to_neo4j g; edges_to_neo4j g
 end
 
