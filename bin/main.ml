@@ -31,4 +31,5 @@ let _ = G.empty
     (9, 10); 
     (11, 12)
   ]
-  |> graph_to_dot
+
+
