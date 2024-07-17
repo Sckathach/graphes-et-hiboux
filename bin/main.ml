@@ -31,4 +31,4 @@ let _ = G.empty
     (9, 10); 
     (11, 12)
   ]
-  |> N.to_neo4j 
+  |> graph_to_dot
