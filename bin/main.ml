@@ -17,7 +17,7 @@ module N = Neo(struct
   let password = "cameleon"
 end)
 
-let _ = G.empty 
+let g = G.empty 
   |> G.add_vertices (range 14)
   |> G.add_edges [
     (0, 1); (0, 2); (0, 3);
@@ -31,5 +31,4 @@ let _ = G.empty
     (9, 10); 
     (11, 12)
   ]
-
 

@@ -1,5 +1,6 @@
 (** Graph definition *)
 
+(** WARNING!!! Owl.Graph and Graph are in conflict! Either open Graph and don't open Owl.Graph or use Owl., Graph..**)
 open Graph
 open Owl
 
