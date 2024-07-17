@@ -2,6 +2,7 @@
  (public_name singeries)
  (name singeries)
  (libraries graphics ocamlgraph owl cohttp-lwt-unix lwt yojson))
+ ; (modes byte))
 
 (env
   (dev

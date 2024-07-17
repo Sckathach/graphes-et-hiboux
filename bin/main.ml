@@ -1,5 +1,5 @@
 (*
-    The owl to protect the code from bugs
+   The owl to protect the code from bugs
 
        ^...^
       / o,o \
@@ -7,10 +7,8 @@
     ====w=w===
 *)
 
-open Graph
 open Singeries.Hibou
 open Singeries.Helpers
-open Singeries.Chouette
 open Singeries.Aigle
 
 module N = Neo(struct
@@ -19,7 +17,7 @@ module N = Neo(struct
   let password = "cameleon"
 end)
 
-let g = G.empty 
+let _ = G.empty 
   |> G.add_vertices (range 14)
   |> G.add_edges [
     (0, 1); (0, 2); (0, 3);
@@ -33,14 +31,4 @@ let g = G.empty
     (9, 10); 
     (11, 12)
   ]
-  |> graph_to_dot_alt 
-
-(* let () =  *)
-(*   let filename = "_output/graph.dot" in  *)
-(*   let out_channel = open_out filename in  *)
-(*   Printf.fprintf out_channel "graph G {\n"; *)
-(*   G.iter_vertex (fun x -> Printf.fprintf out_channel " %d [shape=circle];\n" x) g;  *)
-(*   G.iter_edges (fun x -> fun y -> Printf.fprintf out_channel " %d -- %d;\n" x y) g; *)
-(*   Printf.fprintf out_channel "}\n"; *)
-(*   close_out out_channel *)
-
+  |> N.to_neo4j 

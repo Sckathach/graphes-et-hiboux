@@ -1,7 +1,6 @@
-open Graph
 open Hibou
 
-module Dot= Graph.Graphviz.Neato(struct 
+module Dot = Graph.Graphviz.Neato(struct 
   include G 
   let edge_attributes (_, _) = [] 
   let default_edge_attributes _ = []
