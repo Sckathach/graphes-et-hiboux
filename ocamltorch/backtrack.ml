@@ -1,6 +1,5 @@
 open Owl
 open Printf 
-open Float 
 
 type t = {
   mutable data : float; 
@@ -50,7 +49,7 @@ let neg a =
 
 let tanh a =
   let x = a.data in
-  let t = (exp (2.0 *. x) -. 1.0) /. (exp (2.0 *. x) +. 1.0) in
+  let t = (Maths.exp (2.0 *. x) -. 1.0) /. (Maths.exp (2.0 *. x) +. 1.0) in
   let out = make_value ~children:[a] t ~op:"tanh" ~label:(a.label ^ "tanh") in
   let _backward () =
     a.grad <- a.grad +. (1.0 -. t ** 2.0) *. out.grad;
