@@ -88,6 +88,7 @@ let backward v =
   v.grad <- 1.0;
   List.iter (fun node -> node._backward ()) (!topo)
 
+(* Tests with + and * *)
 let a = make_value ~label:"a" 2.0 
 let b = make_value ~label:"b" 3.0 
 let c = add a (`Value b) 
@@ -101,9 +102,6 @@ printf "Gradient of c: %f = 24\n" c.grad;
 printf "Gradient of d: %f = 20\n" d.grad;
 printf "Gradient of e: %f = 4\n" e.grad;
 printf "Gradient of f: %f = 1\n" f.grad
-(* let d = mul c (`Float 2.0)  *)
-(* let e = exp d  *)
-(* let f = tanh e  *)
-(* backward f; *)
-(* printf "%s\n" (string_of_value f); *)
+
+(* Tests with exp *)
 
