@@ -1,0 +1,8 @@
+(library
+ (name ocamltorch)
+ (public_name ocamltorch)
+ (libraries owl))
+
+(env 
+  (dev
+    (flags (:standard -warn-error -A))))

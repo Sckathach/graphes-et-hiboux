@@ -1,7 +1,8 @@
 (executable
+ (package singeries)
  (public_name singeries)
  (name main)
- (libraries singeries ocamlgraph core_unix owl cohttp-lwt-unix lwt yojson))
+ (libraries singeries ocamltorch ocamlgraph core_unix owl cohttp-lwt-unix lwt yojson))
 
 (env
   (dev
