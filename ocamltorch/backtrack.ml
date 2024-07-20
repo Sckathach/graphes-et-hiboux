@@ -75,19 +75,13 @@ module Value = struct
     out._backward <- _backward;
     out
 
-  let backward v =
-    let topo = ref [] in
-    let visited = Hashtbl.create 10 in
-    let rec build_topo v =
-      if not (Hashtbl.mem visited v.label) then begin
-        Hashtbl.add visited v.label true;
-        List.iter build_topo v._prev;
-        topo := v :: !topo;
-      end
-    in
-    build_topo v;
-    v.grad <- 1.0;
-    List.iter (fun node -> node._backward ()) (!topo)
+  let backward v = 
+    let rec aux = function
+      [] -> ()
+      | x :: q -> x._backward (); aux (q @ x._prev)
+    in 
+      v.grad <- 1.0;
+      aux [v]
 
   let (+..) x y = add x (`Value y) 
   let (-..) x y = add x (`Value (neg y))
