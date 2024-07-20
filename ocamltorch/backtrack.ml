@@ -1,3 +1,4 @@
+open Owl
 open Printf 
 open Float 
 
@@ -19,7 +20,7 @@ let make_value ?(label="") ?(children=[]) ?(op="") data = {
   label = label; 
 }
 
-let rec string_of_value v = 
+let string_of_value v = 
   sprintf "%f" v.data
 
 let add a b = 
@@ -59,7 +60,7 @@ let tanh a =
 
 let exp a =
   let x = a.data in
-  let out = make_value ~children:[a] (exp x) ~op:"exp" ~label:("exp" ^ a.label ) in
+  let out = make_value ~children:[a] (Maths.exp x) ~op:"exp" ~label:("exp" ^ a.label ) in
   let _backward () =
     a.grad <- a.grad +. out.data *. out.grad;
   in
