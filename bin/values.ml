@@ -1,4 +1,4 @@
-open Ocamltorch.Backtrack
+open Ocamltorch.Backtrack.Value
 open Printf
 
 
@@ -53,4 +53,9 @@ printf "Gradient of x2w2: %f = 0.5\n" x2w2.grad;
 printf "Gradient of x1w1x2w2: %f = 0.5\n" x1w1x2w2.grad;
 printf "Gradient of b: %f = 0.5\n" b.grad;
 printf "Gradient of n: %f = 0.5\n" n.grad;
-printf "Gradient of o: %f = 1\n" o.grad;
+printf "Gradient of o: %f = 1\n" o.grad;;
+
+
+let a = make_value 3. 
+let b = make_value 1. 
+let c = a +.. b
