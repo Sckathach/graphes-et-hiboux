@@ -31,3 +31,21 @@ let g = G.empty
     (9, 10); 
     (11, 12)
   ] 
+
+let clustering_coefficient g target = 
+  let neighbours = G.succ g target in 
+  let d = float_of_int (List.length neighbours) in 
+  let rec aux acc v = function
+    [] -> acc
+    | x :: q -> 
+      try 
+        begin
+          let _ = G.find_edge g v x in 
+          aux (acc + 1) v q
+        end
+      with Not_found -> aux acc v q in 
+  let rec aux2 = function 
+    [] -> 0 
+    | x :: q -> (aux 0 x neighbours) + (aux2 q) in 
+  (float_of_int (aux2 neighbours)) /. (d *. (d -. 1.)) 
+

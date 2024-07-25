@@ -19,6 +19,6 @@ let print_dijkstra v1 v2 g =
     | [(x, y)] -> Printf.printf "%d -> %d\n" x y
     | (x, _) :: q -> Printf.printf "%d -> " x; aux q 
   in 
-    let p, _ = Dij.shortest_path g v1 v2 in 
+    let p, _ = C.Dij.shortest_path g v1 v2 in 
     aux p 
 
