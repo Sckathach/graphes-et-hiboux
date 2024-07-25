@@ -1,5 +1,5 @@
 open OUnit2
-open Ocamltorch.Backtrack.Value
+open Ocamltorch.Backprop.Value
 open Singeries.Helpers
 
 let aqe x y = assert_bool (Printf.sprintf "%f != %f" x y) (is_close ~eps:0.1 x y)
