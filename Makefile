@@ -1,9 +1,11 @@
+EXEC=main
+DOTFILE=graph
+
 build:
 	dune build
 
-.SILENT:
 run: build
-	dune exec ./_build/default/bin/main.exe
+	dune exec ./_build/default/bin/$(EXEC).exe
 
 clear:
 	hibou clear bin
@@ -17,5 +19,5 @@ format:
 
 .SILENT:
 dot: run 
-	dot -Tsvg _output/graph.dot > _output/graph.html 
-	firefox _output/graph.html
+	dot -Tsvg _output/$(DOTFILE).dot > _output/$(DOTFILE).html 
+	firefox _output/$(DOTFILE).html

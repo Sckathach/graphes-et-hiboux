@@ -4,6 +4,12 @@
  (name main)
  (libraries singeries ocamltorch ocamlgraph core_unix owl cohttp-lwt-unix lwt yojson))
 
+(executable
+ (package singeries)
+ (public_name playground)
+ (name playground)
+ (libraries singeries ocamltorch ocamlgraph core_unix owl))
+
 (env
   (dev
     (flags (:standard -warn-error -A))))

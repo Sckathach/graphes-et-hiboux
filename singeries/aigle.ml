@@ -19,13 +19,22 @@ module Dot = struct
 end 
 
 module DotPerso = struct 
-  let graph_to_dot ?(filename = "_output/graph.dot") g =  
+  let open_dot ?(digraph = false) ?(rotate = false) filename = 
     let out_channel = open_out filename in 
-    Printf.fprintf out_channel "graph G {\n";
-    G.iter_vertex (fun x -> Printf.fprintf out_channel " %d [shape=circle];\n" x) g; 
-    G.iter_edges (fun x -> fun y -> Printf.fprintf out_channel " %d -- %d;\n" x y) g;
-    Printf.fprintf out_channel "}\n";
-    close_out out_channel
+    if digraph then Printf.fprintf out_channel "digraph G {\n"
+    else Printf.fprintf out_channel "graph G {\n";
+    if rotate then Printf.fprintf out_channel "rankdir=\"LR\"\n";
+    out_channel
+
+  let close_dot channel = 
+    Printf.fprintf channel "}\n";
+    close_out channel
+
+  let graph_to_dot ?(filename = "_output/graph.dot") g =  
+    let channel = open_dot filename in 
+    G.iter_vertex (fun x -> Printf.fprintf channel " %d [shape=circle];\n" x) g; 
+    G.iter_edges (fun x -> fun y -> Printf.fprintf channel " %d -- %d;\n" x y) g;
+    close_dot channel
 end 
 
 module type NEO_PARAMS = sig
