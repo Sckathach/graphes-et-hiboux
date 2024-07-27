@@ -1,7 +1,7 @@
 (library
  (name ocamltorch)
  (public_name ocamltorch)
- (libraries owl))
+ (libraries owl singeries))
 
 (env 
   (dev
