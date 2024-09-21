@@ -54,6 +54,7 @@
 open Ocamltorch.Backprop.Value
 open Singeries.Aigle
 
+
 let channel = DotPerso.open_dot "_output/backprop.dot"
 let create_edge x y = Printf.fprintf channel " %s -> %s;\n" x.label y.label 
 let create_vertex x = Printf.fprintf channel " %s [shape=circle];\n" x.label
@@ -82,5 +83,7 @@ let n = add x1w1x2w2 (`Value b)
 let o = tanh n ;;
 
 print_dot o ;; 
+
+
 
 print_endline "Bonjour!"
